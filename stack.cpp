@@ -7,10 +7,11 @@ using namespace std;
 
 struct Pilha{
 	
-	int dados[TAM];   	   	   	
-	int topo;
+	char dados[TAM];   	   	   	
+	char topo;
 	
 };
+ // Questao 2
 
 bool isEmpty(Pilha p){
 	
@@ -32,7 +33,7 @@ bool isFull(Pilha p){
 }
 
 
-void empilharPrato(Pilha &p,int x){
+void push(Pilha &p,char x){
 	
 	if(isFull(p)){
 	
@@ -54,7 +55,7 @@ void exibir(Pilha p){
 		return;
 	}
 	
-	for(int i = p.topo ; i >=  0 ; i-- ){
+	for(int i = p.topo ; i >= 0  ; i--){
 		
 		cout<<p.dados[i];
 		cout<<endl;
@@ -90,24 +91,39 @@ void topo(Pilha p){
 	
 }
 
+void inverterPilha(Pilha &p){
+	
+	Pilha aux;
+	aux.topo = -1;
+	
+	while(!isEmpty(p)){
+		
+		push(aux, desempilhar(p));
+		
+	}
+	
+	p = aux;
+}
+
 int main(int argc, char** argv){
 	
-	Pilha p ;
-	p.topo = - 1;
+	Pilha p;
+	p.topo = -1;
 	
-	empilharPrato(p,1);
-	empilharPrato(p,2);
-	empilharPrato(p,3);
-	empilharPrato(p,4);
-	cout<<"pilha: "<<endl;
-	exibir(p);
+	push(p,'l');
+	push(p,'e');
+	push(p,'o');
 	
-	cout<<endl;
-	
-	desempilhar(p);
 	exibir(p);
 	
 	cout<<"topo: ";
 	topo(p);
+	cout<<endl;
+	
+	
+	cout<<"invertida: "<<endl;
+	inverterPilha(p);
+	exibir(p);
+	
 	return 0;
 }
