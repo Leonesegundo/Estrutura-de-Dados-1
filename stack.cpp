@@ -99,7 +99,7 @@ int main(int argc, char** argv){
 	empilharPrato(p,2);
 	empilharPrato(p,3);
 	empilharPrato(p,4);
-	
+	cout<<"pilha: "<<endl;
 	exibir(p);
 	
 	cout<<endl;
